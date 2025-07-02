@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeetingMinutes.Web", "MeetingMinutes.Web\MeetingMinutes.Web.csproj", "{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9FC325A8-91E7-4DA9-B1D5-D9F9EF0BE5AA}
+	EndGlobalSection
+EndGlobal
