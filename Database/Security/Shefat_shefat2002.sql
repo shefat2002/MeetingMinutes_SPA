@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [Shefat\shefat2002]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+
