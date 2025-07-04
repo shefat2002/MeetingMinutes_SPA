@@ -3,12 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.infrastructure\\dbcontext\\dapperdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|solutionrelative:meetingminutes.infrastructure\\dbcontext\\dapperdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.infrastructure\\dbcontext\\idbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|solutionrelative:meetingminutes.infrastructure\\dbcontext\\idbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\customers\\corporatecustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\customers\\corporatecustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\corporatecustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\corporatecustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.infrastructure\\repositories\\customerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90B3C32B-C711-43EE-8CAA-4C53A1D30781}|MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj|solutionrelative:meetingminutes.infrastructure\\repositories\\customerrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\models\\meetingminutesmasterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\models\\meetingminutesmasterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\models\\meetingminutesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\models\\meetingminutesdetailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\models\\productserviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\models\\productserviceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\models\\customerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\models\\customerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\meetingminutesmaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\meetingminutesmaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\meetingminutesdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\meetingminutesdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.domain\\entities\\individualcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94344DEF-B943-454B-B03B-2D009C5AAD44}|MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj|solutionrelative:meetingminutes.domain\\entities\\individualcustomer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,28 +67,159 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CorporateCustomer.cs",
-              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\Customers\\CorporateCustomer.cs",
-              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\Customers\\CorporateCustomer.cs",
-              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\Customers\\CorporateCustomer.cs",
-              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\Customers\\CorporateCustomer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
+              "Title": "IDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\DBContext\\IDbContext.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Infrastructure\\DBContext\\IDbContext.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\DBContext\\IDbContext.cs",
+              "RelativeToolTip": "MeetingMinutes.Infrastructure\\DBContext\\IDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T12:54:11.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-04T06:38:33.233Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "DapperDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\DBContext\\DapperDbContext.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Infrastructure\\DBContext\\DapperDbContext.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\DBContext\\DapperDbContext.cs",
+              "RelativeToolTip": "MeetingMinutes.Infrastructure\\DBContext\\DapperDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T06:15:45.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomerRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\Repositories\\CustomerRepository.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Infrastructure\\Repositories\\CustomerRepository.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\Repositories\\CustomerRepository.cs",
+              "RelativeToolTip": "MeetingMinutes.Infrastructure\\Repositories\\CustomerRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T06:03:58.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Program.cs",
               "RelativeDocumentMoniker": "MeetingMinutes.Web\\Program.cs",
               "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Program.cs",
               "RelativeToolTip": "MeetingMinutes.Web\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-03T05:21:37.552Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-03T05:21:37.552Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CorporateCustomer.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\CorporateCustomer.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\CorporateCustomer.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\CorporateCustomer.cs",
+              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\CorporateCustomer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-03T12:54:11.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MeetingMinutesDetailViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\MeetingMinutesDetailViewModel.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Web\\Models\\MeetingMinutesDetailViewModel.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\MeetingMinutesDetailViewModel.cs",
+              "RelativeToolTip": "MeetingMinutes.Web\\Models\\MeetingMinutesDetailViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:39:05.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MeetingMinutesMasterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\MeetingMinutesMasterViewModel.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Web\\Models\\MeetingMinutesMasterViewModel.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\MeetingMinutesMasterViewModel.cs",
+              "RelativeToolTip": "MeetingMinutes.Web\\Models\\MeetingMinutesMasterViewModel.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:38:50.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProductServiceViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\ProductServiceViewModel.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Web\\Models\\ProductServiceViewModel.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\ProductServiceViewModel.cs",
+              "RelativeToolTip": "MeetingMinutes.Web\\Models\\ProductServiceViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:38:35.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CustomerViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\CustomerViewModel.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Web\\Models\\CustomerViewModel.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Models\\CustomerViewModel.cs",
+              "RelativeToolTip": "MeetingMinutes.Web\\Models\\CustomerViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:38:16.467Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MeetingMinutesMaster.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\MeetingMinutesMaster.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\MeetingMinutesMaster.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\MeetingMinutesMaster.cs",
+              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\MeetingMinutesMaster.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:43:19.924Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MeetingMinutesDetail.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\MeetingMinutesDetail.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\MeetingMinutesDetail.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\MeetingMinutesDetail.cs",
+              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\MeetingMinutesDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:40:01.486Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\ProductService.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\ProductService.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\ProductService.cs",
+              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\ProductService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:33:24.26Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IndividualCustomer.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\IndividualCustomer.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Domain\\Entities\\IndividualCustomer.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\Entities\\IndividualCustomer.cs",
+              "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\IndividualCustomer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:32:29.797Z"
             }
           ]
         }
