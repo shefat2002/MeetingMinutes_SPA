@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MeetingMinutes.Domain\MeetingMinutes.Domain.csproj" />
+    <ProjectReference Include="..\MeetingMinutes.Infrastructure\MeetingMinutes.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

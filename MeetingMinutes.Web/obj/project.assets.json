@@ -1507,6 +1507,44 @@
             "rid": "win"
           }
         }
+      },
+      "MeetingMinutes.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MeetingMinutes.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MeetingMinutes.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MeetingMinutes.Application.dll": {}
+        }
+      },
+      "MeetingMinutes.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MeetingMinutes.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MeetingMinutes.Domain.dll": {}
+        }
+      },
+      "MeetingMinutes.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Dapper": "2.1.66",
+          "MeetingMinutes.Application": "1.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.17"
+        },
+        "compile": {
+          "bin/placeholder/MeetingMinutes.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MeetingMinutes.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -4028,11 +4066,28 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "MeetingMinutes.Application/1.0.0": {
+      "type": "project",
+      "path": "../MeetingMinutes.Application/MeetingMinutes.Application.csproj",
+      "msbuildProject": "../MeetingMinutes.Application/MeetingMinutes.Application.csproj"
+    },
+    "MeetingMinutes.Domain/1.0.0": {
+      "type": "project",
+      "path": "../MeetingMinutes.Domain/MeetingMinutes.Domain.csproj",
+      "msbuildProject": "../MeetingMinutes.Domain/MeetingMinutes.Domain.csproj"
+    },
+    "MeetingMinutes.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../MeetingMinutes.Infrastructure/MeetingMinutes.Infrastructure.csproj",
+      "msbuildProject": "../MeetingMinutes.Infrastructure/MeetingMinutes.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Dapper >= 2.1.66",
+      "MeetingMinutes.Domain >= 1.0.0",
+      "MeetingMinutes.Infrastructure >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.17",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.17"
@@ -4069,7 +4124,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj": {
+              "projectPath": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Domain\\MeetingMinutes.Domain.csproj"
+            },
+            "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Infrastructure\\MeetingMinutes.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
