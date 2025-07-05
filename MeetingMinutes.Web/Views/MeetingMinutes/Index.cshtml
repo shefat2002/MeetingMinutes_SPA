@@ -10,7 +10,7 @@
     </div>
 }
 
-@if(ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+@if (ViewData.ModelState.Any(x => x.Value.Errors.Any()))
 {
     <div class="alert alert-danger" role="alert">
         <strong>There were errors in your submission:</strong>
@@ -58,7 +58,7 @@
                                 <option value="@customer.Id" selected="@(Model.CustomerId == customer.Id)">@customer.CustomerName</option>
                             }
                         }
-                        @* Individual customers will be loaded via AJAX *@
+                        
                     </select>
                     <span asp-validation-for="CustomerId" class="text-danger"></span>
                 </div>
@@ -402,7 +402,7 @@
                 $("#productServiceId").val(productId);
                 $("#productServiceId option[value='" + productId + "']").prop('selected', true); // Select the option
                 $("#quantity").val(quantity);
-                $("#unit").val(unit); 
+                $("#unit").val(unit);
 
                 // Remove the row being edited
                 row.remove();

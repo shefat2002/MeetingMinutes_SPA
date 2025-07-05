@@ -17,8 +17,13 @@ builder.Services.AddScoped<IDbContext>(sp =>
 //Repository
 builder.Services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
 builder.Services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
+builder.Services.AddScoped<IProductServiceRepository, ProductServiceRepository>();
+builder.Services.AddScoped<IMeetingMinutesMasterRepository, MeetingMinutesMasterRepository>();
+builder.Services.AddScoped<IMeetingMinutesDetailsRepository, MeetingMinutesDetailsRepository>();
 //Services
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductServiceService, ProductServiceService>();
+builder.Services.AddScoped<IMeetingMinutesService, MeetingMinutesService>();
 
 
 var app = builder.Build();
@@ -40,6 +45,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=MeetingMinutes}/{action=Index}/{id?}");
 
 app.Run();

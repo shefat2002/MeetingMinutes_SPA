@@ -19,15 +19,15 @@ public class MeetingMinutesController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Index()
     {
         var viewModel = new MeetingMinutesViewModel
         {
             CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync(),
             IndividualCustomers = new List<IndividualCustomer>(),
             ProductsServices = await _productService.GetAllProductServicesAsync(),
-            MeetingDate = DateTime.Now,
-            MeetingTime = DateTime.Now.TimeOfDay
+            MeetingDate = DateOnly.FromDateTime(DateTime.Now),
+            MeetingTime = TimeOnly.FromDateTime(DateTime.Now),
         };
         return View(viewModel);
     }
@@ -81,7 +81,6 @@ public class MeetingMinutesController : Controller
 
         var details = model.Details.Select(d => new MeetingMinutesDetail
         {
-            MasterId = d.MasterId,
             ProductServiceId = d.ProductServiceId,
             Quantity = d.Quantity,
             Unit = d.Unit,

@@ -5,8 +5,8 @@ public class MeetingMinutesMaster
     public int Id { get; set; }
     public string CustomerType { get; set; }
     public int? CustomerId { get; set; }
-    public DateTime MeetingDate { get; set; }
-    public TimeSpan MeetingTime { get; set; }
+    public DateOnly MeetingDate { get; set; }
+    public TimeOnly MeetingTime { get; set; }
     public string MeetingPlace { get; set; }
     public string MeetingAgenda { get; set; }
     public string MeetingDiscussion { get; set; }

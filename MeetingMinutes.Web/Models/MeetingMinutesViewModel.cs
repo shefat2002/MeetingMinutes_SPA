@@ -11,11 +11,11 @@ public class MeetingMinutesViewModel
     public int CustomerId { get; set; }
     [Required(ErrorMessage = "Meeting date is required.")]
     [DataType(DataType.Date)]
-    public DateTime MeetingDate { get; set; }
+    public DateOnly MeetingDate { get; set; }
     
     [Required(ErrorMessage = "Meeting time is required.")]
     [DataType(DataType.Time)]
-    public TimeSpan MeetingTime { get; set; }
+    public TimeOnly MeetingTime { get; set; }
     [Required(ErrorMessage = "Meeting place is required.")]
     [StringLength(200)]
     public string MeetingPlace { get; set; }
