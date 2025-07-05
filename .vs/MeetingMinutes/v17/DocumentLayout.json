@@ -46,8 +46,7 @@
               "RelativeToolTip": "MeetingMinutes.Web\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-05T13:03:11.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T13:03:11.681Z"
             },
             {
               "$type": "Document",
@@ -57,7 +56,7 @@
               "RelativeDocumentMoniker": "MeetingMinutes.Web\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "MeetingMinutes.Web\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAawDUAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-05T12:48:10.963Z",
               "EditorCaption": ""
@@ -72,8 +71,7 @@
               "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\MeetingMinutesDetail.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T12:30:05.395Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T12:30:05.395Z"
             },
             {
               "$type": "Document",
@@ -85,8 +83,7 @@
               "RelativeToolTip": "MeetingMinutes.Domain\\Entities\\MeetingMinutesMaster.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T12:23:11.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T12:23:11.356Z"
             },
             {
               "$type": "Document",
@@ -98,8 +95,7 @@
               "RelativeToolTip": "MeetingMinutes.Web\\Controllers\\MeetingMinutesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T11:38:10.144Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T11:38:10.144Z"
             },
             {
               "$type": "Document",
@@ -111,8 +107,7 @@
               "RelativeToolTip": "MeetingMinutes.Web\\Models\\MeetingMinutesViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-05T11:18:31.682Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-05T11:18:31.682Z"
             }
           ]
         }

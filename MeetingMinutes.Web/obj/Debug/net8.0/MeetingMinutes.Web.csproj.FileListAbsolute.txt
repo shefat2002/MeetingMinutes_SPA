@@ -25,7 +25,6 @@ C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\P
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\MeetingMinutes.Web.dll
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\refint\MeetingMinutes.Web.dll
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\MeetingMinutes.Web.pdb

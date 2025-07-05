@@ -38,11 +38,11 @@
                 <div class="col-md-6">
                     <label class="form-label">Customer Type:</label><br />
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked="@(Model.CustomerType == "Corporate" || Model.CustomerType == null)" />
+                        <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked />
                         <label class="form-check-label" for="corporateRadio">Corporate</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="individualRadio" name="CustomerType" value="Individual" checked="@(Model.CustomerType == "Individual")" />
+                        <input type="radio" class="form-check-input" id="individualRadio" name="CustomerType" value="Individual" />
                         <label class="form-check-label" for="individualRadio">Individual</label>
                     </div>
                     <span asp-validation-for="CustomerType" class="text-danger"></span>

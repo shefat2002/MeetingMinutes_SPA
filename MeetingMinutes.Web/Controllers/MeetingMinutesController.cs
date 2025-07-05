@@ -81,6 +81,7 @@ public class MeetingMinutesController : Controller
 
         var details = model.Details.Select(d => new MeetingMinutesDetail
         {
+            MasterId = d.MasterId,
             ProductServiceId = d.ProductServiceId,
             Quantity = d.Quantity,
             Unit = d.Unit,

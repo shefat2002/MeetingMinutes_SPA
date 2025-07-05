@@ -35,13 +35,3 @@ public class MeetingMinutesViewModel
     public IEnumerable<IndividualCustomer> IndividualCustomers { get; set; }
     public IEnumerable<ProductService> ProductsServices { get; set; }
 }
-
-public class MeetingMinutesDetailsViewModel
-{
-    public int Id { get; set; }
-    public int MeetingMinutesId { get; set; }
-    public int ProductServiceId { get; set; }
-    public string ProductServiceName { get; set; }
-    public int Quantity { get; set; }
-    public int Unit { get; set; }
-}
