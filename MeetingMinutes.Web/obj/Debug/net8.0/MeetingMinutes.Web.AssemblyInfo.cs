@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeetingMinutes.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6eb287ef28033995dd56f42fc9508f1e83fd6e14")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acab9ced20f40f397101c8e5292d8b9398422c9c")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeetingMinutes.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeetingMinutes.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
