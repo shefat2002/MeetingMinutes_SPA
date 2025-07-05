@@ -1,7 +1,8 @@
+using MeetingMinutes.Application.ServiceInterface;
+using MeetingMinutes.Application.Services;
 using MeetingMinutes.Infrastructure.DBContext;
-using Microsoft.Data.SqlClient;
+using MeetingMinutes.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,13 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 //Database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var config = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddScoped<IDbContext>(sp =>
-    new DapperDbContext(connectionString));
+    new DapperDbContext(config));
 
 //Repository
-
+builder.Services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
+builder.Services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
 //Services
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 
 var app = builder.Build();

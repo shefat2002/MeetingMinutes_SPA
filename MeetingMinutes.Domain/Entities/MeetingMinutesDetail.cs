@@ -7,5 +7,5 @@ public class MeetingMinutesDetail
     public int ProductServiceId { get; set; }
     public int Quantity { get; set; }
     public string Unit { get; set; }
-
+    public DateTime CreatedDate { get; set; }
 }

@@ -1,6 +1,11 @@
-﻿namespace MeetingMinutes.Web.Models;
+﻿using MeetingMinutes.Domain.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-public class CustomerViewModel
+namespace MeetingMinutes.Web.Models;
+
+public class CustomerViewModel 
 {
-    public string Name { get; set; }
+    public string CustomerType { get; set; } = "Corporate";
+    public required List<CorporateCustomer> CorporateCustomers { get; set; }
+    public required List<IndividualCustomer> IndividualCustomers { get; set; }
 }

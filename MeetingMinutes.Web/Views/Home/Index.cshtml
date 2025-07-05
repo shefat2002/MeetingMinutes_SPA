@@ -1,3 +1,60 @@
-﻿@{
+﻿@model CustomerViewModel
+@{
     ViewData["Title"] = "Meeting Minutes";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title mb-0">Customer Selection</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <!-- Customer Type Radio Buttons -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Customer Type:</label>
+                        <div class="mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="customerType" id="corporateRadio" value="Corporate" checked>
+                                <label class="form-check-label" for="corporateRadio">
+                                    Corporate
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="customerType" id="individualRadio" value="Individual">
+                                <label class="form-check-label" for="individualRadio">
+                                    Individual
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Customer Dropdown -->
+                    <div class="mb-3">
+                        <label for="customerDropdown" class="form-label fw-bold">Select Customer:</label>
+                        <select class="form-select" id="customerDropdown" name="selectedCustomer">
+                            <option value="">-- Select a customer --</option>
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <option value="@customer.Value">@customer.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <!-- Loading indicator -->
+                    <div id="loadingIndicator" class="text-center" style="display: none;">
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <span class="ms-2">Loading customers...</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/customerList.js"></script>
 }

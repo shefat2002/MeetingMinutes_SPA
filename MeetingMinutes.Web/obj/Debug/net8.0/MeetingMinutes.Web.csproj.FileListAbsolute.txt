@@ -146,3 +146,9 @@ C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\P
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\MeetingMinutes.Web.csproj.AssemblyReference.cache
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\MeetingMinutes.Web.sourcelink.json
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\obj\Debug\net8.0\MeetingM.38847241.Up2Date
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Application.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Domain.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Infrastructure.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Domain.pdb
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Infrastructure.pdb
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Application.pdb
