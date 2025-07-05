@@ -14,9 +14,8 @@ public class CorporateCustomerRepository : ICorporateCustomerRepository
     public async Task<IEnumerable<CorporateCustomer>> GetAllCorporateCustomersAsync()
     {
         using var connection = _dbContext.CreateConnection();
-        string sql = "SELECT Id, CustomerName as Name FROM Corporate_Customer_Tbl WHERE IsActive = 1";
-
-        var result = await connection.QueryAsync<CorporateCustomer>(sql).ToString();
+        const string sql = "SELECT Id, CustomerName as Name FROM Corporate_Customer_Tbl WHERE IsActive = 1";
+        var result = await connection.QueryAsync<CorporateCustomer>(sql);
         return result;
     }
 }

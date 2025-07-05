@@ -9,6 +9,7 @@ public class MeetingMinutesMaster
     public TimeSpan MeetingTime { get; set; }
     public string MeetingPlace { get; set; }
     public string MeetingAgenda { get; set; }
+    public string MeetingDiscussion { get; set; }
     public string MeetingDecision { get; set; }
     public string ClientAttendees { get; set; }
     public string HostAttendees { get; set; }

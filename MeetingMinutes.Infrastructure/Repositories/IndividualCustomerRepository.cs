@@ -15,6 +15,7 @@ public class IndividualCustomerRepository : IIndividualCustomerRepository
     {
         using var connection = _dbContext.CreateConnection();
         const string sql = "SELECT Id, CustomerName as Name FROM Individual_Customer_Tbl  WHERE IsActive = 1";
-        return await connection.QueryAsync<IndividualCustomer>(sql);
+        var result = await connection.QueryAsync<IndividualCustomer>(sql);
+        return result;
     }
 }

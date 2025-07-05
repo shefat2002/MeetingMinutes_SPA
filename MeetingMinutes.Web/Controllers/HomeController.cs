@@ -1,6 +1,6 @@
-using System.Diagnostics;
 using MeetingMinutes.Web.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace MeetingMinutes.Web.Controllers
 {
@@ -15,6 +15,7 @@ namespace MeetingMinutes.Web.Controllers
 
         public IActionResult Index()
         {
+            
             return View();
         }
 
