@@ -1,9 +1,7 @@
 ﻿using MeetingMinutes.Application.ServiceInterface;
 using MeetingMinutes.Domain.Entities;
-using MeetingMinutes.Domain.Enums;
 using MeetingMinutes.Web.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 
 namespace MeetingMinutes.Web.Controllers;
 
@@ -35,9 +33,9 @@ public class MeetingMinutesController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetCustomersByType(CustomerType customerType)
+    public async Task<IActionResult> GetCustomersByType(string customerType)
     {
-        if (customerType == CustomerType.Corporate)
+        if (customerType == "Corporate")
         {
             var corporateCustomers = await _customerService.GetAllCorporateCustomersAsync();
             return Json(corporateCustomers);
@@ -66,6 +64,40 @@ public class MeetingMinutesController : Controller
             model.IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync();
             model.ProductsServices = await _productService.GetAllProductServicesAsync();
             return View("Create", model);
+        }
+        var master = new MeetingMinutesMaster
+        {
+            CustomerType = model.CustomerType.ToString(),
+            CustomerId = model.CustomerId,
+            MeetingDate = model.MeetingDate,
+            MeetingTime = model.MeetingTime,
+            MeetingPlace = model.MeetingPlace,
+            MeetingAgenda = model.MeetingAgenda,
+            MeetingDiscussion = model.MeetingDiscussion,
+            MeetingDecision = model.MeetingDecision,
+            ClientAttendees = model.ClientAttendees,
+            HostAttendees = model.HostAttendees
+        };
+
+        var details = model.Details.Select(d => new MeetingMinutesDetail
+        {
+            ProductServiceId = d.ProductServiceId,
+            Quantity = d.Quantity,
+            Unit = d.Unit,
+        }).ToList();
+        try
+        {
+            int masterId = await _meetingMinutesService.SaveMeetingMinutesAsync(master, details);
+            TempData["SuccessMessage"] = "Meeting minutes saved successfully.";
+            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            ModelState.AddModelError("", $"An error occurred while saving meeting minutes: {ex.Message}");
+            model.CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync();
+            model.IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync();
+            model.ProductsServices = await _productService.GetAllProductServicesAsync();
+            return View("Index");
         }
     }
 

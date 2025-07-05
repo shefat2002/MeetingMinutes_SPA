@@ -1,18 +1,422 @@
-﻿@model CustomerViewModel
+﻿@model MeetingMinutesViewModel
 @{
     ViewData["Title"] = "Meeting Minutes";
 }
 
-<div>
-    <div class="form-check form-check-inline">
-        <input type="radio" name="corporate" value="Corporate" checked />
-        <label>Corporate</label>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
     </div>
-    <div class="form-check form-check-inline">
-        <input type="radio" name="individual" value="Individual" />
-        <label>Individual</label>
-    </div>
-</div>
-<br />
-<hr/>
+}
 
+@if(ViewData.ModelState.Any(x => x.Value.Errors.Any()))
+{
+    <div class="alert alert-danger" role="alert">
+        <strong>There were errors in your submission:</strong>
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values)
+            {
+                foreach (var errorMessage in error.Errors)
+                {
+                    <li>@errorMessage.ErrorMessage</li>
+                }
+
+            }
+        </ul>
+    </div>
+}
+
+
+<form asp-action="SaveMeetingMinutes" method="post" id="meetingMinutesForm">
+    @Html.AntiForgeryToken()
+
+    <div class="card mb-4">
+        <div class="card-header">Part 1: Customer Info</div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Customer Type:</label><br />
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked="@(Model.CustomerType == "Corporate" || Model.CustomerType == null)" />
+                        <label class="form-check-label" for="corporateRadio">Corporate</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="individualRadio" name="CustomerType" value="Individual" checked="@(Model.CustomerType == "Individual")" />
+                        <label class="form-check-label" for="individualRadio">Individual</label>
+                    </div>
+                    <span asp-validation-for="CustomerType" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="customerId" class="form-label">Customer Name<span class="text-danger">*</span></label>
+                    <select class="form-select" id="customerId" name="CustomerId">
+                        <option value="">-- Select Customer --</option>
+                        @if (Model.CustomerType == "Corporate" || Model.CustomerType == null)
+                        {
+                            foreach (var customer in Model.CorporateCustomers)
+                            {
+                                <option value="@customer.Id" selected="@(Model.CustomerId == customer.Id)">@customer.CustomerName</option>
+                            }
+                        }
+                        @* Individual customers will be loaded via AJAX *@
+                    </select>
+                    <span asp-validation-for="CustomerId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="meetingDate" class="form-label">Date<span class="text-danger">*</span></label>
+                    <div class="input-group date" id="datepicker">
+                        <input type="text" class="form-control" id="meetingDate" name="MeetingDate" value="@Model.MeetingDate.ToString("MM/dd/yyyy")" />
+                        <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    </div>
+                    <span asp-validation-for="MeetingDate" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="meetingTime" class="form-label">Time<span class="text-danger">*</span></label>
+                    <div class="input-group date" id="timepicker">
+                        <input type="text" class="form-control" id="meetingTime" name="MeetingTime" value="@Model.MeetingTime.ToString(@"hh\:mm\ tt")" />
+                        <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                    </div>
+                    <span asp-validation-for="MeetingTime" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="meetingPlace" class="form-label">Meeting Place<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="meetingPlace" name="MeetingPlace" value="@Model.MeetingPlace" placeholder="meeting place" />
+                    <span asp-validation-for="MeetingPlace" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="clientAttendees" class="form-label">Attends From Client Side<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="clientAttendees" name="ClientAttendees" rows="3" placeholder="Present client side">@Model.ClientAttendees</textarea>
+                    <span asp-validation-for="ClientAttendees" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="hostAttendees" class="form-label">Attends From Host Side<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="hostAttendees" name="HostAttendees" rows="3" placeholder="Present self side">@Model.HostAttendees</textarea>
+                    <span asp-validation-for="HostAttendees" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="meetingAgenda" class="form-label">Meeting Agenda<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="meetingAgenda" name="MeetingAgenda" rows="3" placeholder="meeting agenda">@Model.MeetingAgenda</textarea>
+                    <span asp-validation-for="MeetingAgenda" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="meetingDiscussion" class="form-label">Meeting Discussion<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="meetingDiscussion" name="MeetingDiscussion" rows="3" placeholder="meeting discussion">@Model.MeetingDiscussion</textarea>
+                    <span asp-validation-for="MeetingDiscussion" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="meetingDecision" class="form-label">Meeting Decision<span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="meetingDecision" name="MeetingDecision" rows="3" placeholder="meeting decision">@Model.MeetingDecision</textarea>
+                    <span asp-validation-for="MeetingDecision" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">Part 2: Product/Service Details</div>
+        <div class="card-body">
+            <div class="row mb-3 align-items-end">
+                <div class="col-md-5">
+                    <label for="productServiceId" class="form-label">Interested Product/Service</label>
+                    <select class="form-select" id="productServiceId">
+                        <option value="">select product/service interested</option>
+                        @foreach (var product in Model.ProductsServices)
+                        {
+                            <option value="@product.Id" data-unit="@product.Unit">@product.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="quantity" min="1" value="1" />
+                </div>
+                <div class="col-md-2">
+                    <label for="unit" class="form-label">Unit</label>
+                    <input type="text" class="form-control" id="unit" readonly />
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-primary w-100" id="addDetailBtn">
+                        <i class="bi bi-plus-circle"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered table-striped" id="detailsTable">
+                    <thead>
+                        <tr>
+                            <th>SL#</th>
+                            <th>Interested Product/Service Name</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @* Dynamic rows will be added here by JavaScript *@
+                        @if (Model.Details != null && Model.Details.Any())
+                        {
+                            for (int i = 0; i < Model.Details.Count; i++)
+                            {
+                                <tr data-product-id="@Model.Details[i].ProductServiceId">
+                                    <td>@(i + 1)</td>
+                                    <td>@Model.Details[i].ProductServiceName</td>
+                                    <td>@Model.Details[i].Quantity</td>
+                                    <td>@Model.Details[i].Unit</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-warning edit-row-btn" data-index="@i">Edit</button>
+                                        <button type="button" class="btn btn-sm btn-danger delete-row-btn" data-index="@i">Delete</button>
+                                        <input type="hidden" name="Details[@i].ProductServiceId" value="@Model.Details[i].ProductServiceId" />
+                                        <input type="hidden" name="Details[@i].ProductServiceName" value="@Model.Details[i].ProductServiceName" />
+                                        <input type="hidden" name="Details[@i].Quantity" value="@Model.Details[i].Quantity" />
+                                        <input type="hidden" name="Details[@i].Unit" value="@Model.Details[i].Unit" />
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr><td colspan="5" class="text-center">No matching records found</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+        <button type="submit" class="btn btn-success" id="saveBtn">
+            <i class="bi bi-save"></i> Save
+        </button>
+        <button type="button" class="btn btn-secondary" id="refreshBtn">
+            <i class="bi bi-arrow-clockwise"></i> Refresh
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- For Datepicker: Use a library like Bootstrap Datepicker or Tempus Dominus -->
+    <!-- Example using Bootstrap Datepicker (requires moment.js or similar for full features ) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+
+    <!-- For Timepicker: Use a library like Bootstrap Timepicker or custom JS -->
+    <!-- For 12-hour format, a dedicated timepicker library is highly recommended. -->
+    <!-- Example using Tempus Dominus (requires Moment.js ) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.7.12/js/tempus-dominus.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.7.12/css/tempus-dominus.min.css" rel="stylesheet" />
+
+    <script>
+        $(document ).ready(function () {
+            // --- Part 1: Customer Info Logic ---
+
+            // Initialize Datepicker
+            $("#datepicker input").datepicker({
+                format: "mm/dd/yyyy",
+                autoclose: true,
+                todayHighlight: true,
+            });
+
+            // Initialize Tempus Dominus Timepicker for 12-hour format
+            new tempusDominus.TempusDominus(document.getElementById("timepicker"), {
+                display: {
+                    components: {
+                        date: false,
+                        hours: true,
+                        minutes: true,
+                        seconds: false,
+                        useSeconds: false
+                    },
+                    buttons: {
+                        clear: true,
+                        close: true,
+                        today: false
+                    },
+                    theme: 'light'
+                },
+                localization: {
+                    locale: 'en',
+                    format: 'hh:mm A' // 12-hour format with AM/PM
+                }
+            });
+
+            function loadCustomers(customerType) {
+                var customerDropdown = $("#customerId");
+                customerDropdown.empty();
+                customerDropdown.append($("<option></option>").val("").text("-- Select Customer --"));
+
+                $.ajax({
+                    url: "@Url.Action("GetCustomersByType", "MeetingMinutes")",
+                    type: "GET",
+                    data: { customerType: customerType },
+                    success: function (data) {
+                        $.each(data, function (index, customer) {
+                            customerDropdown.append($("<option></option>").val(customer.id).text(customer.customerName));
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error loading customers: " + error);
+                    },
+                });
+            }
+
+            // Initial load based on default selected radio button
+            var initialCustomerType = $("input[name=\"CustomerType\"]:checked").val();
+            if (initialCustomerType) {
+                loadCustomers(initialCustomerType);
+            }
+
+            // Event listener for radio button change
+            $("input[name=\"CustomerType\"]").change(function () {
+                var selectedType = $(this).val();
+                loadCustomers(selectedType);
+            });
+
+            // --- Part 2: Product/Service Details Logic ---
+            var detailRowIndex = @(Model.Details?.Count ?? 0); // Keep track of rows for model binding
+
+            // Function to add a new row to the details table
+            function addDetailRow(productServiceId, productServiceName, quantity, unit) {
+                var newRow = `
+                    <tr data-product-id="${productServiceId}">
+                        <td>${detailRowIndex + 1}</td>
+                        <td>${productServiceName}</td>
+                        <td>${quantity}</td>
+                        <td>${unit}</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-warning edit-row-btn" data-index="${detailRowIndex}">Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger delete-row-btn" data-index="${detailRowIndex}">Delete</button>
+                            <input type="hidden" name="Details[${detailRowIndex}].ProductServiceId" value="${productServiceId}" />
+                            <input type="hidden" name="Details[${detailRowIndex}].ProductServiceName" value="${productServiceName}" />
+                            <input type="hidden" name="Details[${detailRowIndex}].Quantity" value="${quantity}" />
+                            <input type="hidden" name="Details[${detailRowIndex}].Unit" value="${unit}" />
+                        </td>
+                    </tr>
+                `;
+
+                // Remove "No matching records found" row if present
+                if ($("#detailsTable tbody tr").length === 1 && $("#detailsTable tbody tr td[colspan=\"5\"]").length === 1) {
+                    $("#detailsTable tbody").empty();
+                }
+
+                $("#detailsTable tbody").append(newRow);
+                detailRowIndex++; // Increment for the next row
+                updateRowNumbers(); // Update SL# after adding
+            }
+
+            // Function to update SL# column and hidden input names
+            function updateRowNumbers() {
+                $("#detailsTable tbody tr").each(function (index) {
+                    $(this).find("td:first").text(index + 1);
+                    // Update data-index for edit/delete buttons
+                    $(this).find(".edit-row-btn, .delete-row-btn").attr("data-index", index);
+                    // Update name attributes for hidden inputs for correct model binding
+                    $(this).find("input[type=\"hidden\"]").each(function () {
+                        var oldName = $(this).attr("name");
+                        var newName = oldName.replace(/Details\[\d+\]/, `Details[${index}]`);
+                        $(this).attr("name", newName);
+                    });
+                });
+
+                if ($("#detailsTable tbody tr").length === 0) {
+                    $("#detailsTable tbody").append("<tr><td colspan=\"5\" class=\"text-center\">No matching records found</td></tr>");
+                }
+            }
+
+            // Event listener for Product/Service dropdown change (to get Unit)
+            $("#productServiceId").change(function () {
+                var selectedOption = $(this).find("option:selected");
+                var unit = selectedOption.data("unit"); // Get unit from data-unit attribute
+                var productId = selectedOption.val();
+
+                if (productId) {
+                    $("#unit").val(unit); // Set unit from data attribute
+                } else {
+                    $("#unit").val("");
+                }
+            });
+
+            // Event listener for "Add" button
+            $("#addDetailBtn").click(function () {
+                var productServiceId = $("#productServiceId").val();
+                var productServiceName = $("#productServiceId option:selected").text();
+                var quantity = $("#quantity").val();
+                var unit = $("#unit").val();
+
+                if (!productServiceId || !quantity || !unit) {
+                    alert("Please select a Product/Service, enter Quantity, and ensure Unit is populated.");
+                    return;
+                }
+                if (isNaN(quantity) || parseInt(quantity) <= 0) {
+                    alert("Quantity must be a positive number.");
+                    return;
+                }
+
+                addDetailRow(productServiceId, productServiceName, quantity, unit);
+
+                // Clear fields after adding
+                $("#productServiceId").val("");
+                $("#quantity").val("1");
+                $("#unit").val("");
+            });
+
+            // Event listener for "Delete" button (delegated event for dynamically added rows)
+            $("#detailsTable tbody").on("click", ".delete-row-btn", function () {
+                $(this).closest("tr").remove();
+                updateRowNumbers(); // Re-index rows after deletion
+            });
+
+            // Event listener for "Edit" button (delegated event)
+            $("#detailsTable tbody").on("click", ".edit-row-btn", function () {
+                var row = $(this).closest("tr");
+                var productId = row.find("input[name$='\.ProductServiceId']").val();
+                var productName = row.find("input[name$='\.ProductServiceName']").val();
+                var quantity = row.find("input[name$='\.Quantity']").val();
+                var unit = row.find("input[name$='\.Unit']").val();
+
+                // Populate the input fields with row data for editing
+                $("#productServiceId").val(productId);
+                $("#productServiceId option[value='" + productId + "']").prop('selected', true); // Select the option
+                $("#quantity").val(quantity);
+                $("#unit").val(unit); 
+
+                // Remove the row being edited
+                row.remove();
+                updateRowNumbers(); // Re-index remaining rows
+            });
+
+            // --- Part 3: Save and Refresh Buttons ---
+            $("#refreshBtn").click(function () {
+                location.reload(); // Simple page refresh
+            });
+
+            // Form submission is handled by asp-action and asp-controller
+            // Client-side validation will be handled by jQuery Unobtrusive Validation if enabled
+            // and by the HTML5 validation attributes.
+        });
+    </script>
+}

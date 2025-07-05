@@ -152,3 +152,7 @@ C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\P
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Domain.pdb
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Infrastructure.pdb
 C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\MeetingMinutes.Application.pdb
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Shefat\OneDrive - Daffodil International University\Skill Development\Project\MeetingMinutes\MeetingMinutes.Web\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll

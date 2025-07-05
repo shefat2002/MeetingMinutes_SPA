@@ -1,5 +1,4 @@
 ﻿using MeetingMinutes.Domain.Entities;
-using MeetingMinutes.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace MeetingMinutes.Web.Models;
@@ -7,7 +6,7 @@ namespace MeetingMinutes.Web.Models;
 public class MeetingMinutesViewModel
 {
     [Required(ErrorMessage = "Customer type is required.")]
-    public CustomerType CustomerType { get; set; } = CustomerType.Corporate;
+    public string CustomerType { get; set; } = "Corporate";
     [Required(ErrorMessage = "Customer Name is required.")]
     public int CustomerId { get; set; }
     [Required(ErrorMessage = "Meeting date is required.")]
@@ -41,6 +40,7 @@ public class MeetingMinutesDetailsViewModel
 {
     public int Id { get; set; }
     public int MeetingMinutesId { get; set; }
+    public int ProductServiceId { get; set; }
     public string ProductServiceName { get; set; }
     public int Quantity { get; set; }
     public int Unit { get; set; }

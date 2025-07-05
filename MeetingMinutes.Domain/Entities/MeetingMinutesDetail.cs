@@ -6,6 +6,6 @@ public class MeetingMinutesDetail
     public int MasterId { get; set; }
     public int ProductServiceId { get; set; }
     public int Quantity { get; set; }
-    public string? Unit { get; set; }
+    public int Unit { get; set; }
     public DateTime CreatedDate { get; set; }
 }
