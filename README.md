@@ -5,7 +5,7 @@ A comprehensive meeting minutes management system built with ASP.NET Core 8.0 fo
 
 
 ## 🖼️Screenshots
-![Meeting Minutes SPA Screenshot](Screenshots\Screenshot_SPA.png)
+![Meeting Minutes SPA Screenshot](Screenshots/Screenshot_SPA.png)
 
 ### Project Structure
 
