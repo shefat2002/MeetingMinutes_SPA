@@ -15,8 +15,4 @@ public class ProductServiceService : IProductServiceService
     {
         return await _productServiceRepository.GetAllProductServicesAsync();
     }
-    public async Task<ProductService> GetProductServiceByIdAsync(int id)
-    {
-        return await _productServiceRepository.GetProductServiceByIdAsync(id);
-    }
 }
