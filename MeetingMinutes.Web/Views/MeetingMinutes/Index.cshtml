@@ -27,8 +27,7 @@
     </div>
 } *@
 
-
-<form asp-action="SaveMeetingMinutes" method="post" id="meetingMinutesForm">
+<form asp-action="SaveMeetingMinutes" method="post" id="meetingMinutesForm" class="small">
     @Html.AntiForgeryToken()
     <div class="col mb-3 ms-3">
         <div class="col-md-6">
@@ -43,9 +42,8 @@
             <span asp-validation-for="CustomerType" class="text-danger"></span>
         </div>
     </div>
-    
+
     <div class="card mb-4">
-        
         <div class="card-body">
             <div class="row">
                 <div class="col-md-6">
@@ -54,7 +52,7 @@
                             <label for="customerId" class="col-form-label">Customer Name<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-select" id="customerId" name="CustomerId">
+                            <select class="form-select form-select-sm" id="customerId" name="CustomerId">
                                 <option value=""> select customer name</option>
                                 @if (Model.CustomerType == "Corporate")
                                 {
@@ -70,7 +68,6 @@
                                         <option value="@customer.Id" selected="@(Model.CustomerId == customer.Id)">@customer.CustomerName</option>
                                     }
                                 }
-                        
                             </select>
                             <span asp-validation-for="CustomerId" class="text-danger"></span>
                         </div>
@@ -81,8 +78,8 @@
                         </div>
                         <div class="col-md-3">
                             <div class="input-group date" id="datepicker">
-                                <input type="text" class="form-control" id="meetingDate" name="MeetingDate" value="@Model.MeetingDate.ToString("MM/dd/yyyy")" />
-                                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                <input type="text" class="form-control form-control-sm" id="meetingDate" name="MeetingDate" value="@Model.MeetingDate.ToString("MM/dd/yyyy")" />
+                                <span class="input-group-text" style="font-size:0.85rem;"><i class="bi bi-calendar"></i></span>
                             </div>
                             <span asp-validation-for="MeetingDate" class="text-danger"></span>
                         </div>
@@ -92,8 +89,8 @@
                         </div>
                         <div class="col-md-2">
                             <div class="input-group date" id="timepicker">
-                                <input type="text" class="form-control" id="meetingTime" name="MeetingTime" value="@Model.MeetingTime.ToString(@"hh\:mm\ tt")" />
-                                <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                                <input type="text" class="form-control form-control-sm" id="meetingTime" name="MeetingTime" value="@Model.MeetingTime.ToString(@"hh\:mm\ tt")" />
+                                <span class="input-group-text" style="font-size:0.85rem;"><i class="bi bi-clock"></i></span>
                             </div>
                             <span asp-validation-for="MeetingTime" class="text-danger"></span>
                         </div>
@@ -104,7 +101,7 @@
                             <label for="meetingPlace" class="form-label">Meeting Place<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="meetingPlace" name="MeetingPlace" value="@Model.MeetingPlace" placeholder="meeting place" />
+                            <input type="text" class="form-control form-control-sm" id="meetingPlace" name="MeetingPlace" value="@Model.MeetingPlace" placeholder="meeting place" />
                             <span asp-validation-for="MeetingPlace" class="text-danger"></span>
                         </div>
                     </div>
@@ -114,7 +111,7 @@
                             <label for="clientAttendees" class="form-label">Attends From Client Side<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <textarea class="form-control" id="clientAttendees" name="ClientAttendees" rows="3" placeholder="Present client side">@Model.ClientAttendees</textarea>
+                            <textarea class="form-control form-control-sm" id="clientAttendees" name="ClientAttendees" rows="3" placeholder="Present client side">@Model.ClientAttendees</textarea>
                             <span asp-validation-for="ClientAttendees" class="text-danger"></span>
                         </div>
                     </div>
@@ -124,7 +121,7 @@
                             <label for="hostAttendees" class="form-label">Attends From Host Side<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <textarea class="form-control" id="hostAttendees" name="HostAttendees" rows="3" placeholder="Present self side">@Model.HostAttendees</textarea>
+                            <textarea class="form-control form-control-sm" id="hostAttendees" name="HostAttendees" rows="3" placeholder="Present self side">@Model.HostAttendees</textarea>
                             <span asp-validation-for="HostAttendees" class="text-danger"></span>
                         </div>
                     </div>
@@ -135,7 +132,7 @@
                             <label for="meetingAgenda" class="form-label">Meeting Agenda<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <textarea class="form-control" id="meetingAgenda" name="MeetingAgenda" rows="3" placeholder="meeting agenda">@Model.MeetingAgenda</textarea>
+                            <textarea class="form-control form-control-sm" id="meetingAgenda" name="MeetingAgenda" rows="3" placeholder="meeting agenda">@Model.MeetingAgenda</textarea>
                             <span asp-validation-for="MeetingAgenda" class="text-danger"></span>
                         </div>
                     </div>
@@ -145,7 +142,7 @@
                             <label for="meetingDiscussion" class="form-label">Meeting Discussion<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <textarea class="form-control" id="meetingDiscussion" name="MeetingDiscussion" rows="3" placeholder="meeting discussion">@Model.MeetingDiscussion</textarea>
+                            <textarea class="form-control form-control-sm" id="meetingDiscussion" name="MeetingDiscussion" rows="3" placeholder="meeting discussion">@Model.MeetingDiscussion</textarea>
                             <span asp-validation-for="MeetingDiscussion" class="text-danger"></span>
                         </div>
                     </div>
@@ -155,7 +152,7 @@
                             <label for="meetingDecision" class="form-label">Meeting Decision<span class="text-danger">*</span></label>
                         </div>
                         <div class="col-md-6">
-                            <textarea class="form-control" id="meetingDecision" name="MeetingDecision" rows="3" placeholder="meeting decision">@Model.MeetingDecision</textarea>
+                            <textarea class="form-control form-control-sm" id="meetingDecision" name="MeetingDecision" rows="3" placeholder="meeting decision">@Model.MeetingDecision</textarea>
                             <span asp-validation-for="MeetingDecision" class="text-danger"></span>
                         </div>
                     </div>
@@ -169,10 +166,9 @@
             <div class="row mb-1 align-items-end">
                 <div class="col-md-2">
                     <label for="productServiceId" class="form-label">Interested Product/Service</label>
-
                 </div>
                 <div class="col-md-4">
-                    <select class="form-select" id="productServiceId">
+                    <select class="form-select form-select-sm" id="productServiceId">
                         <option value="">select product/service interested</option>
                         @foreach (var product in Model.ProductsServices)
                         {
@@ -182,24 +178,22 @@
                 </div>
             </div>
             <div class="row mb-3 align-items-end">
-
                 <div class="col-md-2">
                     <label for="quantity" class="form-label">Quantity</label>
-
                 </div>
                 <div class="col-md-2">
-                    <input type="number" class="form-control" id="quantity" min="1" value="1" />
+                    <input type="number" class="form-control form-control-sm" id="quantity" min="1" value="1" />
                 </div>
                 <div class="col-md-1">
                     <label for="unit" class="form-label">Unit</label>
                 </div>
                 <div class="col-md-1">
-                    <input type="text" class="form-control" id="unit" readonly />
+                    <input type="text" class="form-control form-control-sm" id="unit" readonly />
                 </div>
             </div>
             <div class="row align-items-end">
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-secondary" id="addDetailBtn">
+                    <button type="button" class="btn btn-secondary btn-sm" id="addDetailBtn">
                         <i class="bi bi-plus-square"></i> Add
                     </button>
                 </div>
@@ -207,57 +201,67 @@
         </div>
     </div>
 
-            <div class="table-responsive mt-3">
-                <table class="table table-bordered table-striped" id="detailsTable">
-                    <thead>
-                        <tr>
-                            <th>SL#</th>
-                            <th>Interested Product/Service Name</th>
-                            <th>Quantity</th>
-                            <th>Unit</th>
-                            <th>Actions</th>
+    <div class="table-responsive mt-3 ms-3 me-3">
+        <table class="table table-bordered table-striped table-sm" id="detailsTable" style="font-size:0.85rem;">
+            <thead>
+                <tr>
+                    <th class="text-center">SL#</th>
+                    <th>Interested Product/Service Name</th>
+                    <th>Quantity</th>
+                    <th>Unit</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @* Dynamic rows will be added here by JavaScript *@
+                @if (Model.Details != null && Model.Details.Any())
+                {
+                    for (int i = 0; i < Model.Details.Count; i++)
+                    {
+                        <tr data-product-id="@Model.Details[i].ProductServiceId">
+                            <td>@(i + 1)</td>
+                            <td>@Model.Details[i].ProductServiceName</td>
+                            <td>@Model.Details[i].Quantity</td>
+                            <td>@Model.Details[i].Unit</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-warning edit-row-btn" data-index="@i">Edit</button>
+                                <input type="hidden" name="Details[@i].ProductServiceId" value="@Model.Details[i].ProductServiceId" />
+                                <input type="hidden" name="Details[@i].ProductServiceName" value="@Model.Details[i].ProductServiceName" />
+                                <input type="hidden" name="Details[@i].Quantity" value="@Model.Details[i].Quantity" />
+                                <input type="hidden" name="Details[@i].Unit" value="@Model.Details[i].Unit" />
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-danger delete-row-btn" data-index="@i">Delete</button>
+                                <input type="hidden" name="Details[@i].ProductServiceId" value="@Model.Details[i].ProductServiceId" />
+                                <input type="hidden" name="Details[@i].ProductServiceName" value="@Model.Details[i].ProductServiceName" />
+                                <input type="hidden" name="Details[@i].Quantity" value="@Model.Details[i].Quantity" />
+                                <input type="hidden" name="Details[@i].Unit" value="@Model.Details[i].Unit" />
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @* Dynamic rows will be added here by JavaScript *@
-                        @if (Model.Details != null && Model.Details.Any())
-                        {
-                            for (int i = 0; i < Model.Details.Count; i++)
-                            {
-                                <tr data-product-id="@Model.Details[i].ProductServiceId">
-                                    <td>@(i + 1)</td>
-                                    <td>@Model.Details[i].ProductServiceName</td>
-                                    <td>@Model.Details[i].Quantity</td>
-                                    <td>@Model.Details[i].Unit</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-warning edit-row-btn" data-index="@i">Edit</button>
-                                        <button type="button" class="btn btn-sm btn-danger delete-row-btn" data-index="@i">Delete</button>
-                                        <input type="hidden" name="Details[@i].ProductServiceId" value="@Model.Details[i].ProductServiceId" />
-                                        <input type="hidden" name="Details[@i].ProductServiceName" value="@Model.Details[i].ProductServiceName" />
-                                        <input type="hidden" name="Details[@i].Quantity" value="@Model.Details[i].Quantity" />
-                                        <input type="hidden" name="Details[@i].Unit" value="@Model.Details[i].Unit" />
-                                    </td>
-                                </tr>
-                            }
-                        }
-                        else
-                        {
-                            <tr><td colspan="5" class="text-center">No matching records found</td></tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    }
+                }
+                else
+                {
+                    <tr><td colspan="6" class="text-center">No matching records found</td></tr>
+                }
+            </tbody>
+        </table>
     </div>
 
-    <div class="d-flex justify-content-end gap-2">
-        <button type="submit" class="btn btn-success" id="saveBtn">
-            <i class="bi bi-save"></i> Save
-        </button>
-        <button type="button" class="btn btn-secondary" id="refreshBtn">
-            <i class="bi bi-arrow-clockwise"></i> Refresh
-        </button>
+    <div class="col mb-3 ms-3">
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-secondary btn-sm" id="saveBtn">
+                <i class="bi bi-save"></i> Save
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" id="refreshBtn">
+                <i class="bi bi-arrow-clockwise"></i> Refresh
+            </button>
+        
+        </div>
     </div>
+    
+    
 </form>
 
 @section Scripts {
