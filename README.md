@@ -2,9 +2,10 @@
 
 A comprehensive meeting minutes management system built with ASP.NET Core 8.0 following Clean Architecture principles. This is a Single Page Application.
 
-## 🏗️ Architecture
 
-This project follows **Clean Architecture** principles with clear separation of concerns:
+
+## 🖼️Screenshots
+![Meeting Minutes SPA Screenshot](Screenshots\Screenshot_SPA.png)
 
 ### Project Structure
 
@@ -89,7 +90,10 @@ dotnet run
 
 The application will be available at `https://localhost:5001` or `http://localhost:5000`.
 
-## 📊 Database Schema
+
+## 🧪 Development
+
+### 📊 Database Schema
 
 The application uses the following main entities:
 
@@ -99,28 +103,161 @@ The application uses the following main entities:
 - **MeetingMinutes_Master_Tbl**: Main meeting records
 - **MeetingMinutes_Details_Tbl**: Detailed meeting items and services
 
-## 🎯 Usage
+### ☑️Project Dependencies
 
-1. **Navigate to the application** in your web browser
-2. **Select customers** (Corporate or Individual)
-3. **Add products/services** to the system
-4. **Create meeting minutes** with:
-   - Meeting date and time
-   - Meeting location
-   - Agenda and discussion points
-   - Decisions made
-   - Attendees from both client and host sides
-5. **Associate products/services** with meeting minutes
-6. **View and manage** all meeting records
-
-## 🧪 Development
-
-### Project Dependencies
-
-Key NuGet packages used:
+NuGet packages used:
 - `Dapper` (2.1.66) - Micro ORM for data access
 - `Microsoft.EntityFrameworkCore.SqlServer` (8.0.17) - SQL Server provider
 - `Microsoft.AspNetCore.Mvc.NewtonsoftJson` (8.0.17) - JSON serialization
 - `Microsoft.jQuery.Unobtrusive.Validation` (4.0.0) - Client-side validation
 
+### 📝 Create Models
 
+Define entity classes in the  `MeetingMinutes.Domain/Entities` folder:
+
+#### Example:
+```csharp
+public class IndividualCustomer
+{
+    public int Id { get; set; }
+    public string? CustomerName { get; set; }
+    public bool IsActive { get; set; }
+    public DateTime CreatedDate { get; set; }
+}
+```
+
+### ⚙️ Configuring Dapper
+
+Added a `DapperDbContext` class in `MeetingMinutes.Infrastructure/DBContext` folder:
+  ```csharp
+  public class DapperDbContext
+  {
+     private readonly IConfiguration _configuration;
+     private readonly string _connectionString;
+
+     public DapperDbContext(IConfiguration configuration)
+     {
+        _configuration = configuration;
+        _connectionString = _configuration.GetConnectionString("DefaultConnection");
+     }
+
+     public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+  }
+```
+  and Interface `IDbContext`:
+  ```csharp
+  public interface IDbContext
+  {
+      IDbConnection CreateConnection();
+  }
+  ```
+Registered DapperDbContext for Dependency Injection  
+  In `MeetingMinutes.Web/Program.cs`:
+  ```csharp
+  builder.Services.AddSingleton<IDbContext, DapperDbContext>();
+  ```
+
+### 🗂️ Implement Repository
+
+  Define repository interfaces in `MeetingMinutes.Domain/RepositoryInterfaces`:
+
+#### Example: `IIndividualCustomerRepository`
+  ```csharp
+  public interface IIndividualCustomerRepository
+  {
+      Task<IEnumerable<IndividualCustomer>> GetAllIndividualCustomersAsync();
+  }
+  ```
+
+  Implement the repositories in `MeetingMinutes.Infrastructure/Repositories`:
+
+#### Example: `IndividualCustomerRepository`
+  ```csharp
+  public class IndividualCustomerRepository : IIndividualCustomerRepository
+  {
+      private readonly IDbContext _dbContext;
+      public IndividualCustomerRepository(IDbContext dbContext)
+      {
+          _dbContext = dbContext;
+      }
+      public async Task<IEnumerable<IndividualCustomer>> GetAllIndividualCustomersAsync()
+      {
+          using var connection = _dbContext.CreateConnection();
+          const string sql = "SELECT * FROM Individual_Customer_Tbl  WHERE IsActive = 1";
+          var result = await connection.QueryAsync<IndividualCustomer>(sql);
+          return result;
+      }
+  }
+  ```
+
+  Register the repository for dependency injection in `MeetingMinutes.Web/Program.cs`:
+  #### Example:
+  ```csharp
+  builder.Services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
+  ```
+
+  ### 🛎️ Implement Service Layer
+
+  Define service interfaces in `MeetingMinutes.Application/ServiceInterface`:
+
+  #### Example: `ICustomerService`
+  ```csharp
+  public interface ICustomerService
+  {
+      Task<IEnumerable<CorporateCustomer>> GetAllCorporateCustomersAsync();
+      Task<IEnumerable<IndividualCustomer>> GetAllIndividualCustomersAsync();
+  }
+  ```
+
+  Implement the service in `MeetingMinutes.Application/Services`:
+
+  #### Example: `CustomerService`
+  ```csharp
+public class CustomerService : ICustomerService
+{
+    private readonly ICorporateCustomerRepository _corporateCustomerRepository;
+    private readonly IIndividualCustomerRepository _individualCustomerRepository;
+    public CustomerService(
+        ICorporateCustomerRepository corporateCustomerRepository,
+        IIndividualCustomerRepository individualCustomerRepository)
+    {
+        _corporateCustomerRepository = corporateCustomerRepository;
+        _individualCustomerRepository = individualCustomerRepository;
+    }
+    public async Task<IEnumerable<CorporateCustomer>> GetAllCorporateCustomersAsync()
+    {
+        return await _corporateCustomerRepository.GetAllCorporateCustomersAsync();
+    }
+    public async Task<IEnumerable<IndividualCustomer>> GetAllIndividualCustomersAsync()
+    {
+        return await _individualCustomerRepository.GetAllIndividualCustomersAsync();
+    }
+}
+
+  ```
+
+  Register the service for dependency injection in `MeetingMinutes.Web/Program.cs`:
+  ```csharp
+  builder.Services.AddScoped<ICustomerService, CustomerService>();
+  ```
+
+  ### 🔗 Project References (Clean Architecture)
+
+  Set up project references to enforce Clean Architecture boundaries:
+
+  - `MeetingMinutes.Web`  
+    - Reference: `MeetingMinutes.Application`
+  - `MeetingMinutes.Application`  
+    - Reference: `MeetingMinutes.Domain`
+  - `MeetingMinutes.Infrastructure`  
+    - References:  
+      - `MeetingMinutes.Domain`
+      - `MeetingMinutes.Application` (if needed for implementation)
+  - `MeetingMinutes.Domain`  
+    - No project references (core business logic only)
+
+  #### Easy way to remember:
+  ![Project References Diagram](Screenshots/ProjectReferences.jpg)
+
+
+  
