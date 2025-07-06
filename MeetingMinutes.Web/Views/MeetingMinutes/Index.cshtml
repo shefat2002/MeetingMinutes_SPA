@@ -30,23 +30,25 @@
 
 <form asp-action="SaveMeetingMinutes" method="post" id="meetingMinutesForm">
     @Html.AntiForgeryToken()
-
+    <div class="col mb-3 ms-3">
+        <div class="col-md-2">
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked />
+                <label class="form-check-label" for="corporateRadio">Corporate</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="individualRadio" name="CustomerType" value="Individual" />
+                <label class="form-check-label" for="individualRadio">Individual</label>
+            </div>
+            <span asp-validation-for="CustomerType" class="text-danger"></span>
+        </div>
+    </div>
+    
     <div class="card mb-4">
-        <div class="card-header">Part 1: Customer Info</div>
+        
         <div class="card-body">
             <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label">Customer Type:</label><br />
-                    <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked />
-                        <label class="form-check-label" for="corporateRadio">Corporate</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" class="form-check-input" id="individualRadio" name="CustomerType" value="Individual" />
-                        <label class="form-check-label" for="individualRadio">Individual</label>
-                    </div>
-                    <span asp-validation-for="CustomerType" class="text-danger"></span>
-                </div>
+                
                 <div class="col-md-6">
                     <label for="customerId" class="form-label">Customer Name<span class="text-danger">*</span></label>
                     <select class="form-select" id="customerId" name="CustomerId">
@@ -65,7 +67,7 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="meetingDate" class="form-label">Date<span class="text-danger">*</span></label>
                     <div class="input-group date" id="datepicker">
                         <input type="text" class="form-control" id="meetingDate" name="MeetingDate" value="@Model.MeetingDate.ToString("MM/dd/yyyy")" />
@@ -134,7 +136,6 @@
     </div>
 
     <div class="card mb-4">
-        <div class="card-header">Part 2: Product/Service Details</div>
         <div class="card-body">
             <div class="row mb-3 align-items-end">
                 <div class="col-md-5">
