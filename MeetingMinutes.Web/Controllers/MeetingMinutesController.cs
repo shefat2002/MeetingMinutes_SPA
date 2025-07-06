@@ -24,7 +24,7 @@ public class MeetingMinutesController : Controller
         var viewModel = new MeetingMinutesViewModel
         {
             CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync(),
-            IndividualCustomers = new List<IndividualCustomer>(),
+            IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync(),
             ProductsServices = await _productService.GetAllProductServicesAsync(),
             MeetingDate = DateOnly.FromDateTime(DateTime.Now),
             MeetingTime = TimeOnly.FromDateTime(DateTime.Now),
@@ -40,11 +40,13 @@ public class MeetingMinutesController : Controller
             var corporateCustomers = await _customerService.GetAllCorporateCustomersAsync();
             return Json(corporateCustomers);
         }
-        else
+        else if (customerType == "Individual")
         {
             var individualCustomers = await _customerService.GetAllIndividualCustomersAsync();
             return Json(individualCustomers);
         }
+        else
+            return BadRequest();
     }
 
     [HttpGet]

@@ -14,7 +14,7 @@ public class IndividualCustomerRepository : IIndividualCustomerRepository
     public async Task<IEnumerable<IndividualCustomer>> GetAllIndividualCustomersAsync()
     {
         using var connection = _dbContext.CreateConnection();
-        const string sql = "SELECT Id, CustomerName FROM Individual_Customer_Tbl  WHERE IsActive = 1";
+        const string sql = "SELECT * FROM Individual_Customer_Tbl  WHERE IsActive = 1";
         var result = await connection.QueryAsync<IndividualCustomer>(sql);
         return result;
     }

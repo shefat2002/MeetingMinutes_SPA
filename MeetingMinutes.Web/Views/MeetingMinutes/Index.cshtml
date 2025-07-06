@@ -3,7 +3,7 @@
     ViewData["Title"] = "Meeting Minutes";
 }
 
-@if (TempData["SuccessMessage"] != null)
+@* @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success" role="alert">
         @TempData["SuccessMessage"]
@@ -25,13 +25,13 @@
             }
         </ul>
     </div>
-}
+} *@
 
 
 <form asp-action="SaveMeetingMinutes" method="post" id="meetingMinutesForm">
     @Html.AntiForgeryToken()
     <div class="col mb-3 ms-3">
-        <div class="col-md-2">
+        <div class="col-md-6">
             <div class="form-check form-check-inline">
                 <input type="radio" class="form-check-input" id="corporateRadio" name="CustomerType" value="Corporate" checked />
                 <label class="form-check-label" for="corporateRadio">Corporate</label>
@@ -47,15 +47,23 @@
     <div class="card mb-4">
         
         <div class="card-body">
-            <div class="row mb-3">
-                
-                <div class="col-md-6">
-                    <label for="customerId" class="form-label">Customer Name<span class="text-danger">*</span></label>
+            <div class="row mb-2">
+                <div class="col-md-1">
+                    <label for="customerId" class="col-form-label">Customer Name<span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-4">
                     <select class="form-select" id="customerId" name="CustomerId">
-                        <option value="">-- Select Customer --</option>
-                        @if (Model.CustomerType == "Corporate" || Model.CustomerType == null)
+                        <option value=""> select customer name</option>
+                        @if (Model.CustomerType == "Corporate")
                         {
                             foreach (var customer in Model.CorporateCustomers)
+                            {
+                                <option value="@customer.Id" selected="@(Model.CustomerId == customer.Id)">@customer.CustomerName</option>
+                            }
+                        }
+                        @if (Model.CustomerType == "Individual")
+                        {
+                            foreach (var customer in Model.IndividualCustomers)
                             {
                                 <option value="@customer.Id" selected="@(Model.CustomerId == customer.Id)">@customer.CustomerName</option>
                             }
@@ -66,17 +74,22 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-3">
-                    <label for="meetingDate" class="form-label">Date<span class="text-danger">*</span></label>
+            <div class="row mb-2">
+                <div class="col-md-1">
+                    <label for="meetingDate" class="form-label">Date</label>
+                </div>
+                <div class="col-md-2">
                     <div class="input-group date" id="datepicker">
                         <input type="text" class="form-control" id="meetingDate" name="MeetingDate" value="@Model.MeetingDate.ToString("MM/dd/yyyy")" />
                         <span class="input-group-text"><i class="bi bi-calendar"></i></span>
                     </div>
                     <span asp-validation-for="MeetingDate" class="text-danger"></span>
                 </div>
-                <div class="col-md-6">
-                    <label for="meetingTime" class="form-label">Time<span class="text-danger">*</span></label>
+
+                <div class="col-md-1">
+                    <label for="meetingTime" class="form-label">Time</label>
+                </div>
+                <div class="col-md-1">
                     <div class="input-group date" id="timepicker">
                         <input type="text" class="form-control" id="meetingTime" name="MeetingTime" value="@Model.MeetingTime.ToString(@"hh\:mm\ tt")" />
                         <span class="input-group-text"><i class="bi bi-clock"></i></span>
@@ -85,32 +98,38 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-12">
+            <div class="row mb-2">
+                <div class="col-md-1">
                     <label for="meetingPlace" class="form-label">Meeting Place<span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-4">
                     <input type="text" class="form-control" id="meetingPlace" name="MeetingPlace" value="@Model.MeetingPlace" placeholder="meeting place" />
                     <span asp-validation-for="MeetingPlace" class="text-danger"></span>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-12">
+            <div class="row mb-2">
+                <div class="col-md-1">
                     <label for="clientAttendees" class="form-label">Attends From Client Side<span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-4">
                     <textarea class="form-control" id="clientAttendees" name="ClientAttendees" rows="3" placeholder="Present client side">@Model.ClientAttendees</textarea>
                     <span asp-validation-for="ClientAttendees" class="text-danger"></span>
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <div class="col-md-12">
+            <div class="row mb-2">
+                <div class="col-md-1">
                     <label for="hostAttendees" class="form-label">Attends From Host Side<span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-4">
                     <textarea class="form-control" id="hostAttendees" name="HostAttendees" rows="3" placeholder="Present self side">@Model.HostAttendees</textarea>
                     <span asp-validation-for="HostAttendees" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="meetingAgenda" class="form-label">Meeting Agenda<span class="text-danger">*</span></label>
                     <textarea class="form-control" id="meetingAgenda" name="MeetingAgenda" rows="3" placeholder="meeting agenda">@Model.MeetingAgenda</textarea>
                     <span asp-validation-for="MeetingAgenda" class="text-danger"></span>
@@ -118,7 +137,7 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="meetingDiscussion" class="form-label">Meeting Discussion<span class="text-danger">*</span></label>
                     <textarea class="form-control" id="meetingDiscussion" name="MeetingDiscussion" rows="3" placeholder="meeting discussion">@Model.MeetingDiscussion</textarea>
                     <span asp-validation-for="MeetingDiscussion" class="text-danger"></span>
@@ -126,7 +145,7 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <label for="meetingDecision" class="form-label">Meeting Decision<span class="text-danger">*</span></label>
                     <textarea class="form-control" id="meetingDecision" name="MeetingDecision" rows="3" placeholder="meeting decision">@Model.MeetingDecision</textarea>
                     <span asp-validation-for="MeetingDecision" class="text-danger"></span>
