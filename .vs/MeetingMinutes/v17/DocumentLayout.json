@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\views\\meetingminutes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\views\\meetingminutes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|c:\\users\\shefat\\onedrive - daffodil international university\\skill development\\project\\meetingminutes\\meetingminutes.web\\controllers\\meetingminutescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DDB3AB7E-3A8F-44D2-9BD6-0BB73A30813C}|MeetingMinutes.Web\\MeetingMinutes.Web.csproj|solutionrelative:meetingminutes.web\\controllers\\meetingminutescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +28,22 @@
               "RelativeDocumentMoniker": "MeetingMinutes.Web\\Views\\MeetingMinutes\\Index.cshtml",
               "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Views\\MeetingMinutes\\Index.cshtml",
               "RelativeToolTip": "MeetingMinutes.Web\\Views\\MeetingMinutes\\Index.cshtml",
-              "ViewState": "AgIAAPUAAAAAAAAAAAAYwM8AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAANoBAAAAAAAAAAAAAPIBAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-06T09:26:32.553Z",
+              "WhenOpened": "2025-07-08T10:50:46.465Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MeetingMinutesController.cs",
+              "DocumentMoniker": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Controllers\\MeetingMinutesController.cs",
+              "RelativeDocumentMoniker": "MeetingMinutes.Web\\Controllers\\MeetingMinutesController.cs",
+              "ToolTip": "C:\\Users\\Shefat\\OneDrive - Daffodil International University\\Skill Development\\Project\\MeetingMinutes\\MeetingMinutes.Web\\Controllers\\MeetingMinutesController.cs",
+              "RelativeToolTip": "MeetingMinutes.Web\\Controllers\\MeetingMinutesController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAywAsAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T14:42:52.918Z",
               "EditorCaption": ""
             }
           ]

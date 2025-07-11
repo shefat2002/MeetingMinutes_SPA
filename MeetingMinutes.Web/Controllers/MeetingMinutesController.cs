@@ -24,7 +24,7 @@ public class MeetingMinutesController : Controller
         var viewModel = new MeetingMinutesViewModel
         {
             CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync(),
-            IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync(),
+            IndividualCustomers = new List<IndividualCustomer>(),
             ProductsServices = await _productService.GetAllProductServicesAsync(),
             MeetingDate = DateOnly.FromDateTime(DateTime.Now),
             MeetingTime = TimeOnly.FromDateTime(DateTime.Now),
@@ -63,13 +63,13 @@ public class MeetingMinutesController : Controller
         if(!ModelState.IsValid)
         {
             model.CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync();
-            model.IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync();
+            model.IndividualCustomers = model.CustomerType == "Individual" ? await _customerService.GetAllIndividualCustomersAsync() : new List<IndividualCustomer>();
             model.ProductsServices = await _productService.GetAllProductServicesAsync();
-            return View("Create", model);
+            return View("Index", model);
         }
         var master = new MeetingMinutesMaster
         {
-            CustomerType = model.CustomerType.ToString(),
+            CustomerType = model.CustomerType,
             CustomerId = model.CustomerId,
             MeetingDate = model.MeetingDate,
             MeetingTime = model.MeetingTime,
@@ -97,9 +97,9 @@ public class MeetingMinutesController : Controller
         {
             ModelState.AddModelError("", $"An error occurred while saving meeting minutes: {ex.Message}");
             model.CorporateCustomers = await _customerService.GetAllCorporateCustomersAsync();
-            model.IndividualCustomers = await _customerService.GetAllIndividualCustomersAsync();
+            model.IndividualCustomers = model.CustomerType == "Individual" ? await _customerService.GetAllIndividualCustomersAsync() : new List<IndividualCustomer>();
             model.ProductsServices = await _productService.GetAllProductServicesAsync();
-            return View("Index");
+            return View("Index",model);
         }
     }
 

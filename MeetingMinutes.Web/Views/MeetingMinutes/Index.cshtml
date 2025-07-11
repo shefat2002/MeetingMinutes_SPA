@@ -214,7 +214,6 @@
                 </tr>
             </thead>
             <tbody>
-                @* Dynamic rows will be added here by JavaScript *@
                 @if (Model.Details != null && Model.Details.Any())
                 {
                     for (int i = 0; i < Model.Details.Count; i++)
@@ -254,7 +253,7 @@
             <button type="submit" class="btn btn-secondary btn-sm" id="saveBtn">
                 <i class="bi bi-save"></i> Save
             </button>
-            <button type="button" class="btn btn-secondary btn-sm" id="refreshBtn">
+            <button type="submit" class="btn btn-secondary btn-sm" id="refreshBtn">
                 <i class="bi bi-arrow-clockwise"></i> Refresh
             </button>
         
@@ -267,30 +266,29 @@
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- For Datepicker: Use a library like Bootstrap Datepicker or Tempus Dominus -->
-    <!-- Example using Bootstrap Datepicker (requires moment.js or similar for full features ) -->
+    <!-- Datepicker and Timepicker Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet" />
-
-    <!-- For Timepicker: Use a library like Bootstrap Timepicker or custom JS -->
-    <!-- For 12-hour format, a dedicated timepicker library is highly recommended. -->
-    <!-- Example using Tempus Dominus (requires Moment.js ) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.7.12/js/tempus-dominus.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.7.12/css/tempus-dominus.min.css" rel="stylesheet" />
 
+    <!-- jQuery Validation and Unobtrusive Validation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
     <script>
         $(document ).ready(function () {
-            // --- Part 1: Customer Info Logic ---
+            console.log("Document is ready. Initializing form logic.");
 
-            // Initialize Datepicker
+            // --- Datepicker and Timepicker Initialization ---
             $("#datepicker input").datepicker({
                 format: "mm/dd/yyyy",
                 autoclose: true,
                 todayHighlight: true,
             });
+            console.log("Datepicker initialized.");
 
-            // Initialize Tempus Dominus Timepicker for 12-hour format
             new tempusDominus.TempusDominus(document.getElementById("timepicker"), {
                 display: {
                     components: {
@@ -312,8 +310,12 @@
                     format: 'hh:mm A' // 12-hour format with AM/PM
                 }
             });
+            console.log("Timepicker initialized.");
+
+            // --- Part 1: Customer Info Logic ---
 
             function loadCustomers(customerType) {
+                console.log("loadCustomers called for type: " + customerType);
                 var customerDropdown = $("#customerId");
                 customerDropdown.empty();
                 customerDropdown.append($("<option></option>").val("").text("-- Select Customer --"));
@@ -323,42 +325,66 @@
                     type: "GET",
                     data: { customerType: customerType },
                     success: function (data) {
-                        $.each(data, function (index, customer) {
-                            customerDropdown.append($("<option></option>").val(customer.id).text(customer.customerName));
-                        });
+                        console.log("AJAX success for customers. Data received:", data);
+                        if (data && data.length > 0) {
+                            $.each(data, function (index, customer) {
+                                // Assuming JSON returns 'id' and 'customerName' (camelCase from C# PascalCase)
+                                customerDropdown.append($("<option></option>").val(customer.id).text(customer.customerName));
+                            });
+                        } else {
+                            console.log("No customers found for type: " + customerType);
+                        }
+                        // Re-select previously selected customer if available (after re-populating)
+                        var selectedCustomerId = '@Model.CustomerId';
+                        if (selectedCustomerId && customerDropdown.find('option[value="' + selectedCustomerId + '"]').length) {
+                            customerDropdown.val(selectedCustomerId);
+                        }
                     },
                     error: function (xhr, status, error) {
-                        console.error("Error loading customers: " + error);
+                        console.error("AJAX Error loading customers: " + error, xhr.responseText);
                     },
                 });
             }
 
-            // Initial load based on default selected radio button
-            var initialCustomerType = $("input[name=\"CustomerType\"]:checked").val();
+            // Initial load based on default selected radio button or model value
+            var initialCustomerType = $("input[name='CustomerType']:checked").val();
+            if (!initialCustomerType && '@Model.CustomerType' !== '') {
+                initialCustomerType = '@Model.CustomerType';
+                $("input[name='CustomerType'][value='" + initialCustomerType + "']").prop('checked', true);
+            }
             if (initialCustomerType) {
+                console.log("Initial customer type detected: " + initialCustomerType);
                 loadCustomers(initialCustomerType);
+            } else {
+                // Default to Corporate if no initial type is set (e.g., first load)
+                $("#corporateRadio").prop('checked', true);
+                loadCustomers("Corporate");
             }
 
             // Event listener for radio button change
-            $("input[name=\"CustomerType\"]").change(function () {
+            $("input[name='CustomerType']").change(function () {
                 var selectedType = $(this).val();
+                console.log("CustomerType radio button changed to: " + selectedType);
                 loadCustomers(selectedType);
             });
 
             // --- Part 2: Product/Service Details Logic ---
-            var detailRowIndex = @(Model.Details?.Count ?? 0); // Keep track of rows for model binding
+            // Initialize detailRowIndex based on existing model details
+            var detailRowIndex = @(Model.Details != null ? Model.Details.Count : 0);
+            console.log("Initial detailRowIndex: " + detailRowIndex);
 
             // Function to add a new row to the details table
             function addDetailRow(productServiceId, productServiceName, quantity, unit) {
+                console.log("Adding detail row: ", { productServiceId, productServiceName, quantity, unit });
                 var newRow = `
                     <tr data-product-id="${productServiceId}">
-                        <td>${detailRowIndex + 1}</td>
+                        <td class="sl-no"></td>
                         <td>${productServiceName}</td>
                         <td>${quantity}</td>
                         <td>${unit}</td>
                         <td>
-                            <button type="button" class="btn btn-sm btn-warning edit-row-btn" data-index="${detailRowIndex}">Edit</button>
-                            <button type="button" class="btn btn-sm btn-danger delete-row-btn" data-index="${detailRowIndex}">Delete</button>
+                            <button type="button" class="btn btn-sm btn-warning edit-row-btn">Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger delete-row-btn">Delete</button>
                             <input type="hidden" name="Details[${detailRowIndex}].ProductServiceId" value="${productServiceId}" />
                             <input type="hidden" name="Details[${detailRowIndex}].ProductServiceName" value="${productServiceName}" />
                             <input type="hidden" name="Details[${detailRowIndex}].Quantity" value="${quantity}" />
@@ -368,31 +394,31 @@
                 `;
 
                 // Remove "No matching records found" row if present
-                if ($("#detailsTable tbody tr").length === 1 && $("#detailsTable tbody tr td[colspan=\"5\"]").length === 1) {
+                if ($("#detailsTable tbody tr").length === 1 && $("#detailsTable tbody tr td[colspan='6']").length === 1) {
                     $("#detailsTable tbody").empty();
                 }
 
                 $("#detailsTable tbody").append(newRow);
                 detailRowIndex++; // Increment for the next row
-                updateRowNumbers(); // Update SL# after adding
+                updateRowNumbers(); // Update SL# and hidden input names after adding
             }
 
             // Function to update SL# column and hidden input names
             function updateRowNumbers() {
+                console.log("Updating row numbers and hidden input names.");
                 $("#detailsTable tbody tr").each(function (index) {
-                    $(this).find("td:first").text(index + 1);
-                    // Update data-index for edit/delete buttons
-                    $(this).find(".edit-row-btn, .delete-row-btn").attr("data-index", index);
+                    $(this).find("td.sl-no").text(index + 1);
                     // Update name attributes for hidden inputs for correct model binding
-                    $(this).find("input[type=\"hidden\"]").each(function () {
+                    $(this).find("input[type='hidden']").each(function () {
                         var oldName = $(this).attr("name");
+                        // Use a regex to replace the index in the name attribute
                         var newName = oldName.replace(/Details\[\d+\]/, `Details[${index}]`);
                         $(this).attr("name", newName);
                     });
                 });
 
                 if ($("#detailsTable tbody tr").length === 0) {
-                    $("#detailsTable tbody").append("<tr><td colspan=\"5\" class=\"text-center\">No matching records found</td></tr>");
+                    $("#detailsTable tbody").append("<tr><td colspan='6' class='text-center'>No matching records found</td></tr>");
                 }
             }
 
@@ -401,9 +427,10 @@
                 var selectedOption = $(this).find("option:selected");
                 var unit = selectedOption.data("unit"); // Get unit from data-unit attribute
                 var productId = selectedOption.val();
+                console.log("Product/Service dropdown changed. ProductId: " + productId + ", Unit: " + unit);
 
                 if (productId) {
-                    $("#unit").val(unit); // Set unit from data attribute
+                    $("#unit").val(unit);
                 } else {
                     $("#unit").val("");
                 }
@@ -411,6 +438,7 @@
 
             // Event listener for "Add" button
             $("#addDetailBtn").click(function () {
+                console.log("Add button clicked.");
                 var productServiceId = $("#productServiceId").val();
                 var productServiceName = $("#productServiceId option:selected").text();
                 var quantity = $("#quantity").val();
@@ -431,25 +459,32 @@
                 $("#productServiceId").val("");
                 $("#quantity").val("1");
                 $("#unit").val("");
+                // Re-trigger validation if needed (optional)
+                $("#meetingMinutesForm").validate().element("#productServiceId");
+                $("#meetingMinutesForm").validate().element("#quantity");
             });
 
             // Event listener for "Delete" button (delegated event for dynamically added rows)
             $("#detailsTable tbody").on("click", ".delete-row-btn", function () {
+                console.log("Delete button clicked.");
                 $(this).closest("tr").remove();
                 updateRowNumbers(); // Re-index rows after deletion
             });
 
             // Event listener for "Edit" button (delegated event)
             $("#detailsTable tbody").on("click", ".edit-row-btn", function () {
+                console.log("Edit button clicked.");
                 var row = $(this).closest("tr");
+                // Retrieve values from hidden inputs
                 var productId = row.find("input[name$='\.ProductServiceId']").val();
-                var productName = row.find("input[name$='\.ProductServiceName']").val();
+                var productServiceName = row.find("input[name$='\.ProductServiceName']").val();
                 var quantity = row.find("input[name$='\.Quantity']").val();
                 var unit = row.find("input[name$='\.Unit']").val();
 
                 // Populate the input fields with row data for editing
                 $("#productServiceId").val(productId);
-                $("#productServiceId option[value='" + productId + "']").prop('selected', true); // Select the option
+                // Ensure the option is actually selected in the dropdown
+                $("#productServiceId option[value='" + productId + "']").prop('selected', true);
                 $("#quantity").val(quantity);
                 $("#unit").val(unit);
 
@@ -460,12 +495,12 @@
 
             // --- Part 3: Save and Refresh Buttons ---
             $("#refreshBtn").click(function () {
-                location.reload(); // Simple page refresh
+                console.log("Refresh button clicked. Reloading page.");
+                location.reload();
             });
 
-            // Form submission is handled by asp-action and asp-controller
-            // Client-side validation will be handled by jQuery Unobtrusive Validation if enabled
-            // and by the HTML5 validation attributes.
+            // Initial call to update row numbers if there are pre-loaded details
+            updateRowNumbers();
         });
     </script>
 }
